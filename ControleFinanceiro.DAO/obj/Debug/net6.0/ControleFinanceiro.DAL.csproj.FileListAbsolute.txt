@@ -1,0 +1,17 @@
+C:\Users\Yago Felipe\Desktop\CotroleFinanceiro\ControleFinanceiro.DAO\obj\Debug\net6.0\ControleFinanceiro.DAL.csproj.AssemblyReference.cache
+C:\Users\Yago Felipe\Desktop\CotroleFinanceiro\ControleFinanceiro.DAO\obj\Debug\net6.0\ControleFinanceiro.DAL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Yago Felipe\Desktop\CotroleFinanceiro\ControleFinanceiro.DAO\obj\Debug\net6.0\ControleFinanceiro.DAL.AssemblyInfoInputs.cache
+C:\Users\Yago Felipe\Desktop\CotroleFinanceiro\ControleFinanceiro.DAO\obj\Debug\net6.0\ControleFinanceiro.DAL.AssemblyInfo.cs
+C:\Users\Yago Felipe\Desktop\CotroleFinanceiro\ControleFinanceiro.DAO\obj\Debug\net6.0\ControleFinanceiro.DAL.csproj.CoreCompileInputs.cache
+C:\Users\Yago Felipe\Desktop\CotroleFinanceiro\ControleFinanceiro.DAO\bin\Debug\net6.0\ControleFinanceiro.DAL.deps.json
+C:\Users\Yago Felipe\Desktop\CotroleFinanceiro\ControleFinanceiro.DAO\bin\Debug\net6.0\ControleFinanceiro.DAL.runtimeconfig.json
+C:\Users\Yago Felipe\Desktop\CotroleFinanceiro\ControleFinanceiro.DAO\bin\Debug\net6.0\ControleFinanceiro.DAL.dll
+C:\Users\Yago Felipe\Desktop\CotroleFinanceiro\ControleFinanceiro.DAO\bin\Debug\net6.0\ref\ControleFinanceiro.DAL.dll
+C:\Users\Yago Felipe\Desktop\CotroleFinanceiro\ControleFinanceiro.DAO\bin\Debug\net6.0\ControleFinanceiro.DAL.pdb
+C:\Users\Yago Felipe\Desktop\CotroleFinanceiro\ControleFinanceiro.DAO\bin\Debug\net6.0\ControleFinanceiro.BLL.dll
+C:\Users\Yago Felipe\Desktop\CotroleFinanceiro\ControleFinanceiro.DAO\bin\Debug\net6.0\ControleFinanceiro.BLL.pdb
+C:\Users\Yago Felipe\Desktop\CotroleFinanceiro\ControleFinanceiro.DAO\obj\Debug\net6.0\ControleFinanceiro.DAL.csproj.CopyComplete
+C:\Users\Yago Felipe\Desktop\CotroleFinanceiro\ControleFinanceiro.DAO\obj\Debug\net6.0\ControleFinanceiro.DAL.dll
+C:\Users\Yago Felipe\Desktop\CotroleFinanceiro\ControleFinanceiro.DAO\obj\Debug\net6.0\ref\ControleFinanceiro.DAL.dll
+C:\Users\Yago Felipe\Desktop\CotroleFinanceiro\ControleFinanceiro.DAO\obj\Debug\net6.0\ControleFinanceiro.DAL.pdb
+C:\Users\Yago Felipe\Desktop\CotroleFinanceiro\ControleFinanceiro.DAO\obj\Debug\net6.0\ControleFinanceiro.DAL.genruntimeconfig.cache
