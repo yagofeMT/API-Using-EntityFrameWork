@@ -14,7 +14,7 @@ namespace ControleFinanceiro.DAL.Mapeamentos
         public void Configure(EntityTypeBuilder<Tipo> builder)
         {
             builder.HasKey(x => x.Id);
-            builder.Property(t => t.Name).IsRequired();
+            builder.Property(t => t.Name).IsRequired().HasMaxLength(20);
 
             builder.HasMany(t => t.Categories).WithOne(t => t.Type);
 

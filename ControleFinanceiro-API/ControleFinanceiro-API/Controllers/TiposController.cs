@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ControleFinanceiro.BLL.Models;
 using ControleFinanceiro.DAL;
+using ControleFinanceiro.DAL.Interfaces;
 
 namespace ControleFinanceiro_API.Controllers
 {
@@ -15,25 +16,25 @@ namespace ControleFinanceiro_API.Controllers
     [ApiController]
     public class TiposController : ControllerBase
     {
-        private readonly Context _context;
+        private readonly ITipoRepository _tipoRepository;
 
-        public TiposController(Context context)
+        public TiposController(ITipoRepository tipoRepository)
         {
-            _context = context;
+            _tipoRepository = tipoRepository;
         }
 
         // GET: api/Types
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Tipo>>> GetTypes()
         {
-            return await _context.Types.ToListAsync();
+            return await _tipoRepository.GetAll().ToListAsync();
         }
 
         // GET: api/Types/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Tipo>> GetType(int id)
         {
-            var @type = await _context.Types.FindAsync(id);
+            var @type = await _tipoRepository.GetById(id);
 
             if (@type == null)
             {
@@ -41,69 +42,6 @@ namespace ControleFinanceiro_API.Controllers
             }
 
             return @type;
-        }
-
-        // PUT: api/Types/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutType(int id, Tipo @type)
-        {
-            if (id != @type.Id)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(@type).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!TypeExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
-
-        // POST: api/Types
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<Tipo>> PostType(Tipo @type)
-        {
-            _context.Types.Add(@type);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetType", new { id = @type.Id }, @type);
-        }
-
-        // DELETE: api/Types/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteType(int id)
-        {
-            var @type = await _context.Types.FindAsync(id);
-            if (@type == null)
-            {
-                return NotFound();
-            }
-
-            _context.Types.Remove(@type);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
-        }
-
-        private bool TypeExists(int id)
-        {
-            return _context.Types.Any(e => e.Id == id);
         }
     }
 }
