@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ControleFinanceiro.DAL.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20220106155951_CreateDatabasee")]
-    partial class CreateDatabasee
+    [Migration("20220110211958_test")]
+    partial class test
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -67,7 +67,7 @@ namespace ControleFinanceiro.DAL.Migrations
                     b.ToTable("Cards", (string)null);
                 });
 
-            modelBuilder.Entity("ControleFinanceiro.BLL.Models.Categorys", b =>
+            modelBuilder.Entity("ControleFinanceiro.BLL.Models.Category", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -130,16 +130,16 @@ namespace ControleFinanceiro.DAL.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "53fb3e18-d421-4876-a93e-fcbab745325d",
-                            ConcurrencyStamp = "30774ef4-9da2-4903-8df8-24c7ed873ce6",
+                            Id = "d6766e1f-912f-41e3-b6cc-6c8eb902981a",
+                            ConcurrencyStamp = "06a05541-5336-47d2-8174-ccf97874c020",
                             Description = "Admintrador do sistema",
                             Name = "Administrador",
                             NormalizedName = "ADMINISTRADOR"
                         },
                         new
                         {
-                            Id = "c13eb54d-fcc9-4b23-9e07-b84cc471047b",
-                            ConcurrencyStamp = "098f8f16-04f8-4cc1-9e79-d211461934e7",
+                            Id = "71dcd2ba-111e-4341-a6b0-df3e746e8c6e",
+                            ConcurrencyStamp = "2616b681-4ad9-4556-9d29-e3eeb58bbf0b",
                             Description = "Usuario do sistema",
                             Name = "Usuario",
                             NormalizedName = "USUARIO"
@@ -320,7 +320,7 @@ namespace ControleFinanceiro.DAL.Migrations
                     b.ToTable("Spedings", (string)null);
                 });
 
-            modelBuilder.Entity("ControleFinanceiro.BLL.Models.Type", b =>
+            modelBuilder.Entity("ControleFinanceiro.BLL.Models.Tipo", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -330,7 +330,8 @@ namespace ControleFinanceiro.DAL.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
 
                     b.HasKey("Id");
 
@@ -549,9 +550,9 @@ namespace ControleFinanceiro.DAL.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("ControleFinanceiro.BLL.Models.Categorys", b =>
+            modelBuilder.Entity("ControleFinanceiro.BLL.Models.Category", b =>
                 {
-                    b.HasOne("ControleFinanceiro.BLL.Models.Type", "Type")
+                    b.HasOne("ControleFinanceiro.BLL.Models.Tipo", "Type")
                         .WithMany("Categories")
                         .HasForeignKey("TypeId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -562,7 +563,7 @@ namespace ControleFinanceiro.DAL.Migrations
 
             modelBuilder.Entity("ControleFinanceiro.BLL.Models.Gain", b =>
                 {
-                    b.HasOne("ControleFinanceiro.BLL.Models.Categorys", "Categories")
+                    b.HasOne("ControleFinanceiro.BLL.Models.Category", "Categories")
                         .WithMany("Gains")
                         .HasForeignKey("CategoriesId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -595,7 +596,7 @@ namespace ControleFinanceiro.DAL.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ControleFinanceiro.BLL.Models.Categorys", "Categories")
+                    b.HasOne("ControleFinanceiro.BLL.Models.Category", "Categories")
                         .WithMany("Spedings")
                         .HasForeignKey("CategoriesId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -678,7 +679,7 @@ namespace ControleFinanceiro.DAL.Migrations
                     b.Navigation("Spedings");
                 });
 
-            modelBuilder.Entity("ControleFinanceiro.BLL.Models.Categorys", b =>
+            modelBuilder.Entity("ControleFinanceiro.BLL.Models.Category", b =>
                 {
                     b.Navigation("Gains");
 
@@ -692,7 +693,7 @@ namespace ControleFinanceiro.DAL.Migrations
                     b.Navigation("Spedings");
                 });
 
-            modelBuilder.Entity("ControleFinanceiro.BLL.Models.Type", b =>
+            modelBuilder.Entity("ControleFinanceiro.BLL.Models.Tipo", b =>
                 {
                     b.Navigation("Categories");
                 });

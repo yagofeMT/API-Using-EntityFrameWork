@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using ControleFinanceiro.BLL.Models;
 using ControleFinanceiro.DAL;
 using Microsoft.AspNetCore.Cors;
+using ControleFinanceiro.DAL.Interfaces;
 
 namespace ControleFinanceiro_API.Controllers
 {
@@ -16,25 +17,25 @@ namespace ControleFinanceiro_API.Controllers
     [ApiController]
     public class CategorysController : ControllerBase
     {
-        private readonly Context _context;
+        private readonly ICategoryRepository _categoryRepository;
 
-        public CategorysController(Context context)
+        public CategorysController(ICategoryRepository categoryRepository)
         {
-            _context = context;
+           _categoryRepository = categoryRepository;
         }
 
         // GET: api/Categorys
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Category>>> GetCategories()
         {
-            return await _context.Categories.Include(c => c.Type).ToListAsync();
+            return await _categoryRepository.GetAll().ToListAsync();
         }
 
         // GET: api/Categorys/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Category>> GetCategorys(int id)
         {
-            var categorys = await _context.Categories.FindAsync(id);
+            var categorys = await _categoryRepository.GetById(id);
 
             if (categorys == null)
             {
@@ -54,25 +55,17 @@ namespace ControleFinanceiro_API.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(categorys).State = EntityState.Modified;
+            if (ModelState.IsValid)
+            {
+                await _categoryRepository.Put(categorys);
 
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!CategorysExists(id))
+                return Ok(new
                 {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                    message = $"Category {categorys.Name} Update Sucess"
+                });
             }
 
-            return NoContent();
+            return BadRequest(ModelState);
         }
 
         // POST: api/Categorys
@@ -80,31 +73,39 @@ namespace ControleFinanceiro_API.Controllers
         [HttpPost]
         public async Task<ActionResult<Category>> PostCategorys(Category categorys)
         {
-            _context.Categories.Add(categorys);
-            await _context.SaveChangesAsync();
+            if (ModelState.IsValid)
+            {
+               await _categoryRepository.Insert(categorys);
 
-            return CreatedAtAction("GetCategorys", new { id = categorys.Id }, categorys);
+                return Ok(new
+                {
+                    message = $"Category {categorys.Name} Update Sucess"
+                });
+            }
+
+            return BadRequest(ModelState);
+
         }
 
         // DELETE: api/Categorys/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCategorys(int id)
         {
-            var categorys = await _context.Categories.FindAsync(id);
-            if (categorys == null)
+            var category = await _categoryRepository.GetById(id);
+
+            if(category == null)
             {
                 return NotFound();
             }
 
-            _context.Categories.Remove(categorys);
-            await _context.SaveChangesAsync();
 
-            return NoContent();
-        }
+            await _categoryRepository.DeleteById(id);
 
-        private bool CategorysExists(int id)
-        {
-            return _context.Categories.Any(e => e.Id == id);
+            return Ok(new
+            {
+                message = $"Category {category.Name} Deleted Sucess"
+            });
+
         }
     }
 }

@@ -28,16 +28,6 @@ namespace ControleFinanceiro.DAL
 
         }
 
-        public class YourDbContextFactory : IDesignTimeDbContextFactory<Context>
-        {
-            public Context CreateDbContext(string[] args)
-            {
-                var optionsBuilder = new DbContextOptionsBuilder<Context>();
-                optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=GerenciadorFinanceiro;Trusted_Connection=True;MultipleActiveResultSets=true");
-
-                return new Context(optionsBuilder.Options);
-            }
-        }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -45,11 +35,11 @@ namespace ControleFinanceiro.DAL
 
             builder.ApplyConfiguration(new CardMap());
             builder.ApplyConfiguration(new CategoriesMap());
+            builder.ApplyConfiguration(new TipoMap());
             builder.ApplyConfiguration(new FunctionMap());
             builder.ApplyConfiguration( new GainMap());
             builder.ApplyConfiguration(new SpedingMap());
             builder.ApplyConfiguration(new UserMap());
-            builder.ApplyConfiguration(new TipoMap());
             builder.ApplyConfiguration(new MonthMap());
 
         }

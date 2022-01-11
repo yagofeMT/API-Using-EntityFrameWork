@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ControleFinanceiro.DAL.Migrations
 {
-    public partial class CreateDatabasee : Migration
+    public partial class test : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -43,7 +43,7 @@ namespace ControleFinanceiro.DAL.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Name = table.Column<string>(type: "nvarchar(20)", maxLength: 20, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -311,8 +311,8 @@ namespace ControleFinanceiro.DAL.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Description", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "53fb3e18-d421-4876-a93e-fcbab745325d", "30774ef4-9da2-4903-8df8-24c7ed873ce6", "Admintrador do sistema", "Administrador", "ADMINISTRADOR" },
-                    { "c13eb54d-fcc9-4b23-9e07-b84cc471047b", "098f8f16-04f8-4cc1-9e79-d211461934e7", "Usuario do sistema", "Usuario", "USUARIO" }
+                    { "71dcd2ba-111e-4341-a6b0-df3e746e8c6e", "2616b681-4ad9-4556-9d29-e3eeb58bbf0b", "Usuario do sistema", "Usuario", "USUARIO" },
+                    { "d6766e1f-912f-41e3-b6cc-6c8eb902981a", "06a05541-5336-47d2-8174-ccf97874c020", "Admintrador do sistema", "Administrador", "ADMINISTRADOR" }
                 });
 
             migrationBuilder.InsertData(
