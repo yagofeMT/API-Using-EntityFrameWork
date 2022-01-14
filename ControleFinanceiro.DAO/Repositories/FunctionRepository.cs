@@ -28,6 +28,20 @@ namespace ControleFinanceiro.DAL.Repositories
             }
         }
 
+        public IQueryable<Function> FilterFunction(string name)
+        {
+            try
+            {
+                var functions = _ManagerFunction.Roles.Where(f => f.Name.Contains(name));
+                return functions;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
         public async Task PutFunction(Function function)
         {
             try

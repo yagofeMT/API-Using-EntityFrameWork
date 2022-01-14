@@ -11,5 +11,6 @@ namespace ControleFinanceiro.DAL.Interfaces
     {
         Task AddFunction(Function function);
         Task PutFunction(Function function);
+        IQueryable<Function> FilterFunction(string name);
     }
 }
