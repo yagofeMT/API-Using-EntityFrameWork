@@ -1,4 +1,6 @@
-﻿namespace ControleFinanceiro.BLL.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace ControleFinanceiro.BLL.Models
 {
     public class Category
     {

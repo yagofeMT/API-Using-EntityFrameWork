@@ -17,6 +17,20 @@ namespace ControleFinanceiro.DAL.Repositories
             _context = context;
         }
 
+        public async Task Delete(TEntity entity)
+        {
+            try
+            {
+                _context.Set<TEntity>().Remove(entity);
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
         public async Task DeleteById(int id)
         {
             try

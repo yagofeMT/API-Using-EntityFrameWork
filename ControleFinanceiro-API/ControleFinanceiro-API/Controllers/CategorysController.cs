@@ -21,7 +21,7 @@ namespace ControleFinanceiro_API.Controllers
 
         public CategorysController(ICategoryRepository categoryRepository)
         {
-           _categoryRepository = categoryRepository;
+            _categoryRepository = categoryRepository;
         }
 
         // GET: api/Categorys
@@ -73,9 +73,16 @@ namespace ControleFinanceiro_API.Controllers
         [HttpPost]
         public async Task<ActionResult<Category>> PostCategorys(Category categorys)
         {
+            if(categorys.Name.Length <= 3)
+            {
+                return NotFound(new
+                {
+                    message = $"Category {categorys.Name} Update Sucess"
+                });
+            }
             if (ModelState.IsValid)
             {
-               await _categoryRepository.Insert(categorys);
+                await _categoryRepository.Insert(categorys);
 
                 return Ok(new
                 {
@@ -93,7 +100,7 @@ namespace ControleFinanceiro_API.Controllers
         {
             var category = await _categoryRepository.GetById(id);
 
-            if(category == null)
+            if (category == null)
             {
                 return NotFound();
             }
@@ -105,7 +112,12 @@ namespace ControleFinanceiro_API.Controllers
             {
                 message = $"Category {category.Name} Deleted Sucess"
             });
+        }
 
+        [HttpGet("FilterCategorys/{categoryName}")]
+        public async Task<ActionResult<IEnumerable<Category>>> FilterCategorys(string categoryName)
+        {
+            return await _categoryRepository.FilterCategory(categoryName).ToListAsync();
         }
     }
 }

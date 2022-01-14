@@ -18,7 +18,6 @@ namespace ControleFinanceiro.DAL.Repositories
             _context = context;
         }
 
-
         public new IQueryable<Category> GetAll() {
             try
             {
@@ -44,6 +43,20 @@ namespace ControleFinanceiro.DAL.Repositories
                 throw ex;
             }
 
+        }
+
+        public IQueryable<Category> FilterCategory(string categoryName)
+        {
+            try
+            {
+                var entity = _context.Categories.Include(c => c.Type).Where(c => c.Name.Contains(categoryName));
+                return entity;
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
     }

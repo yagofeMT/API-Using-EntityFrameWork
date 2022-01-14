@@ -14,6 +14,7 @@ namespace ControleFinanceiro.DAL
 {
     public class Context : IdentityDbContext<User, Function, string>
     {
+
         public DbSet<Card> Cards { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Speding> Spedings { get; set; }
@@ -28,6 +29,13 @@ namespace ControleFinanceiro.DAL
 
         }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+
+            }
+        }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
