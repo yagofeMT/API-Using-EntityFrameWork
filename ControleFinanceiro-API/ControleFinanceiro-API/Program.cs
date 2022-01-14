@@ -1,18 +1,33 @@
-
 using ControleFinanceiro.DAL;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.SpaServices.Extensions;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http.Json;
 using ControleFinanceiro.DAL.Interfaces;
 using ControleFinanceiro.DAL.Repositories;
+using FluentValidation;
+using ControleFinanceiro.BLL.Models;
+using ControleFinanceiro_API.Validation;
+using FluentValidation.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 
 builder.Services.AddCors();
+
+builder.Services.AddDbContext<Context>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("AcessDBString")));
+
+builder.Services.AddIdentity<User, Function>().AddEntityFrameworkStores<Context>();
+
+builder.Services.AddScoped<DbContext, Context>();
+
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+builder.Services.AddScoped<ITipoRepository, TipoRepository>();
+builder.Services.AddScoped<IFunctionRepository, FunctionRepository>();
+
+builder.Services.AddTransient<IValidator<Category>, CategoryValidator>();
+builder.Services.AddTransient<IValidator<Function>, FunctionValidator>();
+
+// Add services to the container.
 
 builder.Services.AddSpaStaticFiles(diretorio =>
 {
@@ -20,6 +35,7 @@ builder.Services.AddSpaStaticFiles(diretorio =>
 });
 
 builder.Services.AddControllers()
+    .AddFluentValidation()
     .AddJsonOptions(opcoes =>
     {
         opcoes.JsonSerializerOptions.IgnoreNullValues = true;
@@ -30,18 +46,9 @@ builder.Services.AddControllers()
 
     });
 
-
-builder.Services.AddDbContext<Context>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("AcessDBString")));
-
-builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
-builder.Services.AddScoped<ITipoRepository, TipoRepository>();
-
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
-
 
 var app = builder.Build();
 
@@ -56,23 +63,20 @@ app.UseCors(opcoes => opcoes.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader())
 
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
-
 app.UseStaticFiles();
 
 app.MapControllers();
 
 app.UseHttpsRedirection();
-if (!app.Environment.IsDevelopment())
-{
-    app.UseSpaStaticFiles();
-}
+
+app.UseSpaStaticFiles();
 
 app.UseRouting();
+
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllers();
-});
+});;
 
 app.UseSpa(spa =>
 {

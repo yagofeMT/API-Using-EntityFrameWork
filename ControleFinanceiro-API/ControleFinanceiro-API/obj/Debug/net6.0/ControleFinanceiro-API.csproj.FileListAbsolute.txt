@@ -273,3 +273,9 @@ C:\Users\Yago Felipe\Desktop\CotroleFinanceiro\ControleFinanceiro-API\ControleFi
 C:\Users\Yago Felipe\Desktop\CotroleFinanceiro\ControleFinanceiro-API\ControleFinanceiro-API\bin\Debug\net6.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
 C:\Users\Yago Felipe\Desktop\CotroleFinanceiro\ControleFinanceiro-API\ControleFinanceiro-API\bin\Debug\net6.0\runtimes\win-arm\lib\net6.0\dotnet-aspnet-codegenerator-design.exe
 C:\Users\Yago Felipe\Desktop\CotroleFinanceiro\ControleFinanceiro-API\ControleFinanceiro-API\bin\Debug\net6.0\runtimes\win-arm64\lib\net6.0\dotnet-aspnet-codegenerator-design.exe
+C:\Users\Yago Felipe\Desktop\CotroleFinanceiro\ControleFinanceiro-API\ControleFinanceiro-API\bin\Debug\net6.0\FluentValidation.dll
+C:\Users\Yago Felipe\Desktop\CotroleFinanceiro\ControleFinanceiro-API\ControleFinanceiro-API\bin\Debug\net6.0\FluentValidation.AspNetCore.dll
+C:\Users\Yago Felipe\Desktop\CotroleFinanceiro\ControleFinanceiro-API\ControleFinanceiro-API\bin\Debug\net6.0\FluentValidation.DependencyInjectionExtensions.dll
+C:\Users\Yago Felipe\Desktop\CotroleFinanceiro\ControleFinanceiro-API\ControleFinanceiro-API\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.Design.dll
+C:\Users\Yago Felipe\Desktop\CotroleFinanceiro\ControleFinanceiro-API\ControleFinanceiro-API\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.SqlServer.Design.dll
+C:\Users\Yago Felipe\Desktop\CotroleFinanceiro\ControleFinanceiro-API\ControleFinanceiro-API\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.InMemory.dll

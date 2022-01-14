@@ -9,6 +9,6 @@ namespace ControleFinanceiro.BLL.Models
 {
     public class Function : IdentityRole<string>
     {
-        public string Description { get; set; }
+        public string? Description { get; set; }
     }
 }
