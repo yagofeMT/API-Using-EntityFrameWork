@@ -10,90 +10,102 @@ namespace ControleFinanceiro_API.Controllers
     [ApiController]
     public class FunctionsController : ControllerBase
     {
-            private readonly IFunctionRepository _functionRepository;
+        private readonly IFunctionRepository _functionRepository;
 
-            public FunctionsController(IFunctionRepository functionRepository)
+        public FunctionsController(IFunctionRepository functionRepository)
+        {
+            _functionRepository = functionRepository;
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Function>>> GetFunctions()
+        {
+            return await _functionRepository.GetAll().ToListAsync();
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Function>> GetFunctionById(string id)
+        {
+            var function = await _functionRepository.GetById(id);
+
+            if (function == null)
             {
-                _functionRepository = functionRepository;
+                return NotFound();
             }
 
-            [HttpGet]
-            public async Task<ActionResult<IEnumerable<Function>>> GetFunctions()
+            return function;
+        }
+
+        [HttpGet("FilterFunctions/{name}")]
+        public async Task<ActionResult<IEnumerable<Function>>> FilterFunction(string name)
+        {
+            if (name == null)
             {
-                return await _functionRepository.GetAll().ToListAsync();
+                BadRequest();
             }
 
-            [HttpGet("{id}")]
-            public async Task<ActionResult<Function>> GetFunctionById(string id)
-            {
-                var function = await _functionRepository.GetById(id);
-                
-                if (function == null)
-                {
-                    return NotFound();
-                }
+            return await _functionRepository.FilterFunction(name).ToListAsync();
+        }
 
-                return function;
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutFunction(string id, FunctionsViewModel function)
+        {
+            if (id != function.Id)
+            {
+                return BadRequest();
             }
 
-            [HttpPut("{id}")]
-            public async Task<IActionResult> PutFunction(string id, FunctionsViewModel function)
+            if (ModelState.IsValid)
             {
-                if (id != function.Id)
-                {
-                    return BadRequest();
-                }
+                Function func = new Function { Id = function.Id, Name = function.Name, Description = function.Description };
 
-                if (ModelState.IsValid)
-                {
-                    Function func = new Function { Id = function.Id, Name = function.Name, Description = function.Description};
-
-                    await _functionRepository.PutFunction(func);
-
-                    return Ok(new
-                    {
-                        message = $"Function {func.Name} Put Sucess"
-                    });
-
-                }
-
-                return BadRequest(ModelState);
-            }
-
-            [HttpPost]
-            public async Task<ActionResult<Function>> PostFunction(FunctionsViewModel function)
-            {
-                if (ModelState.IsValid)
-                {
-                    Function func = new Function {Name = function.Name, Description = function.Description};
-
-                   await _functionRepository.AddFunction(func);
-
-                    return Ok(new
-                    {
-                        message = $"Function {func.Name} Add Sucess"
-                    });
-                }
-
-                return BadRequest(ModelState);
-            }
-
-            [HttpDelete("{id}")]
-            public async Task<ActionResult<Function>> DeleteFunction(string id)
-            {
-
-                Function function = await _functionRepository.GetById(id);
-
-                if(function == null)
-                {
-                    return NotFound();
-                }
-                await _functionRepository.Delete(function);
+                await _functionRepository.PutFunction(func);
 
                 return Ok(new
                 {
-                    message = $"Function {function.Name} Delete Sucess"
+                    message = $"Function {func.Name} Put Sucess"
+                });
+
+            }
+
+            return BadRequest(ModelState);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<Function>> PostFunction(FunctionsViewModel function)
+        {
+            if (ModelState.IsValid)
+            {
+                Function func = new Function { Name = function.Name, Description = function.Description };
+
+                await _functionRepository.AddFunction(func);
+
+                return Ok(new
+                {
+                    message = $"Function {func.Name} Add Sucess"
                 });
             }
+
+            return BadRequest(ModelState);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<Function>> DeleteFunction(string id)
+        {
+
+            Function function = await _functionRepository.GetById(id);
+
+            if (function == null)
+            {
+                return NotFound();
+            }
+            await _functionRepository.Delete(function);
+
+            return Ok(new
+            {
+                message = $"Function {function.Name} Delete Sucess"
+            });
+        }
     }
 }

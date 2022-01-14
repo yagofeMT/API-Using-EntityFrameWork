@@ -1,9 +1,10 @@
 ﻿using ControleFinanceiro.BLL.Models;
+using ControleFinanceiro_API.ViewModels;
 using FluentValidation;
 
 namespace ControleFinanceiro_API.Validation
 {
-    public class FunctionValidator : AbstractValidator<Function>
+    public class FunctionValidator : AbstractValidator<FunctionsViewModel>
     {
         public FunctionValidator()
         {
@@ -19,13 +20,6 @@ namespace ControleFinanceiro_API.Validation
                 .NotEmpty().WithMessage("Enter Description")
                 .MinimumLength(4).WithMessage("The name must be longer than 4 characters")
                 .MaximumLength(50).WithMessage("The name must be less than 50 characters");
-
-
-            RuleFor(f => f.NormalizedName)
-                .NotEmpty().WithMessage("Enter NormalizedName")
-                .NotNull().WithMessage("Enter NormalizedName")
-                .MinimumLength(4).WithMessage("The name must be longer than 50 characters")
-                .MaximumLength(50).WithMessage("The name must be less than 50 characters"); ;
         }
     }
 }

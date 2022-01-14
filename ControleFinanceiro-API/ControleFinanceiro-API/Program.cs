@@ -7,6 +7,8 @@ using FluentValidation;
 using ControleFinanceiro.BLL.Models;
 using ControleFinanceiro_API.Validation;
 using FluentValidation.AspNetCore;
+using ControleFinanceiro_API.ViewModels;
+using ControleFinanceiro_API.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,15 +19,18 @@ builder.Services.AddDbContext<Context>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("AcessDBString")));
 
 builder.Services.AddIdentity<User, Function>().AddEntityFrameworkStores<Context>();
+builder.Services.ConfigPasswordUser();
 
 builder.Services.AddScoped<DbContext, Context>();
 
+builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<ITipoRepository, TipoRepository>();
 builder.Services.AddScoped<IFunctionRepository, FunctionRepository>();
 
 builder.Services.AddTransient<IValidator<Category>, CategoryValidator>();
-builder.Services.AddTransient<IValidator<Function>, FunctionValidator>();
+builder.Services.AddTransient<IValidator<FunctionsViewModel>, FunctionValidator>();
+builder.Services.AddTransient<IValidator<RegisterVM>, RegisterVMValidator>();
 
 // Add services to the container.
 
