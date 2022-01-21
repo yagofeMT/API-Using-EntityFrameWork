@@ -14,7 +14,7 @@ namespace ControleFinanceiro.BLL.Models
         public string Number { get; set; }
         public double Limite { get; set; }
         public string UserId { get; set; }
-        public User User { get; set; }
-        public virtual  ICollection<Speding> Spedings { get; set; }
+        public User? User { get; set; }
+        public virtual  ICollection<Speding>? Spedings { get; set; }
     }
 }

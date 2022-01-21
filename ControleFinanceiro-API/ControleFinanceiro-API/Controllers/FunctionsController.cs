@@ -1,6 +1,7 @@
 ﻿using ControleFinanceiro.BLL.Models;
 using ControleFinanceiro.DAL.Interfaces;
 using ControleFinanceiro_API.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,6 +9,8 @@ namespace ControleFinanceiro_API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [AllowAnonymous]
+    [Authorize(Roles = "Administrador")]
     public class FunctionsController : ControllerBase
     {
         private readonly IFunctionRepository _functionRepository;

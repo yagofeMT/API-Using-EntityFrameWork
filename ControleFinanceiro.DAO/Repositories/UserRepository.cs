@@ -108,5 +108,32 @@ namespace ControleFinanceiro.DAL.Repositories
                 throw ex;
             }
         }
+
+
+        public async Task<User> GetUserByEmail(string email)
+        {
+            try
+            {
+                return await _ManagerUser.FindByEmailAsync(email);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        public async Task<IList<string>> GetFunctionsUser(User user)
+        {
+            try
+            {
+                return await _ManagerUser.GetRolesAsync(user);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 }

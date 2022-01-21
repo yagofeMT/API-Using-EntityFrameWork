@@ -15,9 +15,7 @@ namespace ControleFinanceiro_API.Validation
 
             RuleFor(u => u.CPF)
                 .NotNull().WithMessage("Enter CPF")
-                .NotEmpty().WithMessage("Enter CPF")
-                .MaximumLength(14).WithMessage("The CPF must be less than 14 characters")
-                .MinimumLength(14).WithMessage("The CPF mus be longer than 14 characters");
+                .NotEmpty().WithMessage("Enter CPF");
 
             RuleFor(u => u.Email)
                 .NotEmpty().WithMessage("Enter Email")
@@ -38,9 +36,6 @@ namespace ControleFinanceiro_API.Validation
                 .MaximumLength(17).WithMessage("The Password must be less than 17 characters")
                 .MinimumLength(5).WithMessage("The Password must be longer than 5 characters");
 
-            RuleFor(u => u.Photo)
-                .NotNull().WithMessage("Enter Photo")
-                .NotEmpty().WithMessage("Enter Photo");
         }
     }
 }
