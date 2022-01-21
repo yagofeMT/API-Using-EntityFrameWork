@@ -9,6 +9,10 @@ using ControleFinanceiro_API.Validation;
 using FluentValidation.AspNetCore;
 using ControleFinanceiro_API.ViewModels;
 using ControleFinanceiro_API.Extensions;
+using System.Text;
+using ControleFinanceiro_API;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,10 +31,14 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<ITipoRepository, TipoRepository>();
 builder.Services.AddScoped<IFunctionRepository, FunctionRepository>();
+builder.Services.AddScoped<ICardRepository, CardRepository>();
+
 
 builder.Services.AddTransient<IValidator<Category>, CategoryValidator>();
 builder.Services.AddTransient<IValidator<FunctionsViewModel>, FunctionValidator>();
 builder.Services.AddTransient<IValidator<RegisterVM>, RegisterVMValidator>();
+builder.Services.AddTransient<IValidator<LoginVM>, LoginVMValidator>();
+
 
 // Add services to the container.
 
@@ -38,6 +46,26 @@ builder.Services.AddSpaStaticFiles(diretorio =>
 {
     diretorio.RootPath = "ControleFinanceiro-UI";
 });
+
+var key = Encoding.ASCII.GetBytes(Settings.KeySecret);
+
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+    .AddJwtBearer(options =>
+    {
+        options.RequireHttpsMetadata = false;
+        options.SaveToken = true;
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(key),
+            ValidateIssuer = false,
+            ValidateAudience = false
+        };
+    });
 
 builder.Services.AddControllers()
     .AddFluentValidation()
@@ -72,16 +100,20 @@ app.UseStaticFiles();
 
 app.MapControllers();
 
-app.UseHttpsRedirection();
-
-app.UseSpaStaticFiles();
-
 app.UseRouting();
+
+app.UseAuthentication();
+
+app.UseAuthorization();
 
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllers();
-});;
+});
+
+app.UseHttpsRedirection();
+
+app.UseSpaStaticFiles();
 
 app.UseSpa(spa =>
 {

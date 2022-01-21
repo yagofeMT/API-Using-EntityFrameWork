@@ -9,11 +9,14 @@ using Microsoft.EntityFrameworkCore;
 using ControleFinanceiro.BLL.Models;
 using ControleFinanceiro.DAL;
 using ControleFinanceiro.DAL.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ControleFinanceiro_API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [AllowAnonymous]
+    [Authorize(Roles = "Administrador")]
     public class TiposController : ControllerBase
     {
         private readonly ITipoRepository _tipoRepository;

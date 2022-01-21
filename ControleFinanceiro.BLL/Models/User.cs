@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Newtonsoft.Json;
 
 namespace ControleFinanceiro.BLL.Models
 {
@@ -6,7 +7,9 @@ namespace ControleFinanceiro.BLL.Models
     {
         public string CPF { get; set; }
         public string Profissao { get; set; }
-        public byte[] Photo  { get; set; }
+
+        [JsonProperty("Photo")]
+        public byte[]? Photo  { get; set; }
 
         public virtual ICollection<Card> Cards { get; set; }
         public virtual ICollection<Gain> Gains { get; set; }

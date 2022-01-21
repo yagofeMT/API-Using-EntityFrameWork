@@ -10,11 +10,14 @@ using ControleFinanceiro.BLL.Models;
 using ControleFinanceiro.DAL;
 using Microsoft.AspNetCore.Cors;
 using ControleFinanceiro.DAL.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ControleFinanceiro_API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [AllowAnonymous]
+
     public class CategorysController : ControllerBase
     {
         private readonly ICategoryRepository _categoryRepository;
@@ -24,14 +27,15 @@ namespace ControleFinanceiro_API.Controllers
             _categoryRepository = categoryRepository;
         }
 
-        // GET: api/Categorys
+
+        [Authorize (Roles = "Administrador")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Category>>> GetCategories()
         {
             return await _categoryRepository.GetAll().ToListAsync();
         }
 
-        // GET: api/Categorys/5
+        [Authorize(Roles = "Administrador")]
         [HttpGet("{id}")]
         public async Task<ActionResult<Category>> GetCategorys(int id)
         {
@@ -45,8 +49,8 @@ namespace ControleFinanceiro_API.Controllers
             return categorys;
         }
 
-        // PUT: api/Categorys/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+
+        [Authorize(Roles = "Administrador")]
         [HttpPut("{id}")]
         public async Task<IActionResult> PutCategorys(int id, Category categorys)
         {
@@ -68,8 +72,9 @@ namespace ControleFinanceiro_API.Controllers
             return BadRequest(ModelState);
         }
 
-        // POST: api/Categorys
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+
+
+        [Authorize(Roles = "Administrador")]
         [HttpPost]
         public async Task<ActionResult<Category>> PostCategorys(Category categorys)
         {
@@ -77,7 +82,7 @@ namespace ControleFinanceiro_API.Controllers
             {
                 return NotFound(new
                 {
-                    message = $"Category {categorys.Name} Update Sucess"
+                    message = $"Category {categorys.Name} Not Found"
                 });
             }
             if (ModelState.IsValid)
@@ -94,7 +99,8 @@ namespace ControleFinanceiro_API.Controllers
 
         }
 
-        // DELETE: api/Categorys/5
+
+        [Authorize(Roles = "Administrador")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteCategorys(int id)
         {
@@ -114,6 +120,8 @@ namespace ControleFinanceiro_API.Controllers
             });
         }
 
+
+        [Authorize(Roles = "Administrador")]
         [HttpGet("FilterCategorys/{categoryName}")]
         public async Task<ActionResult<IEnumerable<Category>>> FilterCategorys(string categoryName)
         {

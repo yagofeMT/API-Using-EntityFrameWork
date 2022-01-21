@@ -6,7 +6,7 @@
         public string Password { get; set; }
         public string Email { get; set; }
         public string Profissao { get; set; }
-        public byte[] Photo { get; set; }
+        public byte[]? Photo { get; set; }
         public string CPF { get; set; }
     }
 }

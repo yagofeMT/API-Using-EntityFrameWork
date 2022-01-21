@@ -16,5 +16,7 @@ namespace ControleFinanceiro.DAL.Interfaces
         Task Login(User user, bool remember);
         Task PutUser(User user);
         IQueryable<User> FilterUser(string name);
+        Task<User> GetUserByEmail(string email);
+        Task<IList<string>> GetFunctionsUser(User user);
     }
 }

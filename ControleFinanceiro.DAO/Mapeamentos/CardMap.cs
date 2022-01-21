@@ -24,7 +24,7 @@ namespace ControleFinanceiro.DAL.Mapeamentos
 
             builder.HasOne(c => c.User).WithMany(c => c.Cards).HasForeignKey(c => c.UserId).IsRequired().OnDelete(DeleteBehavior.NoAction);
 
-            builder.HasMany(c => c.Spedings).WithOne(c => c.Card);
+            builder.HasMany(c => c.Spedings).WithOne(c => c.Card).IsRequired();
 
             builder.ToTable("Cards");
         }

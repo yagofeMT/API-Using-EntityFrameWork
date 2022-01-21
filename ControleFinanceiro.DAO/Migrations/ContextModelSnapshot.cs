@@ -128,16 +128,16 @@ namespace ControleFinanceiro.DAL.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "16332942-5398-4446-b93e-ab704ee533d3",
-                            ConcurrencyStamp = "d7527b4e-cae9-428b-ba10-c0d9ab764bd0",
+                            Id = "a5f48dc3-395a-49ee-8df0-e227fa5028b2",
+                            ConcurrencyStamp = "1a986414-7c13-4266-a20f-b6d5b9754694",
                             Description = "Admintrador do sistema",
                             Name = "Administrador",
                             NormalizedName = "ADMINISTRADOR"
                         },
                         new
                         {
-                            Id = "70f1625a-65df-4067-9a63-70d8b1782dfd",
-                            ConcurrencyStamp = "bc8933ef-af43-41ca-abd1-10fc44aa5890",
+                            Id = "6c8998fd-cd99-4513-aa24-7452ef4ba11a",
+                            ConcurrencyStamp = "c4b3e3dc-66f7-4f08-8c68-8774236319b4",
                             Description = "Usuario do sistema",
                             Name = "Usuario",
                             NormalizedName = "USUARIO"
@@ -359,8 +359,7 @@ namespace ControleFinanceiro.DAL.Migrations
 
                     b.Property<string>("CPF")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
@@ -397,7 +396,6 @@ namespace ControleFinanceiro.DAL.Migrations
                         .HasColumnType("bit");
 
                     b.Property<byte[]>("Photo")
-                        .IsRequired()
                         .HasColumnType("varbinary(max)");
 
                     b.Property<string>("Profissao")

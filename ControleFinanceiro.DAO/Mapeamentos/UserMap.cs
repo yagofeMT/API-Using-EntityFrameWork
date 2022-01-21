@@ -14,7 +14,7 @@ namespace ControleFinanceiro.DAL.Mapeamentos
         public void Configure(EntityTypeBuilder<User> builder)
         {
             builder.Property(u => u.Id).ValueGeneratedOnAdd();
-            builder.Property(u => u.CPF).IsRequired().HasMaxLength(20);
+            builder.Property(u => u.CPF).IsRequired();
             builder.HasIndex(u => u.CPF).IsUnique();
             builder.Property(u => u.Profissao).IsRequired().HasMaxLength(30);
 
