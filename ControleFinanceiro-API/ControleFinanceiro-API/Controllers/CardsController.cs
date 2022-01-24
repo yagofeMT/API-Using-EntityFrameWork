@@ -66,7 +66,7 @@ namespace ControleFinanceiro_API.Controllers
         }
 
 
-        [HttpPost]
+       [HttpPost]
        public async Task<ActionResult<Card>> PostCard(Card card)
        {
            if(card == null)
@@ -107,6 +107,17 @@ namespace ControleFinanceiro_API.Controllers
                 message = $"Card Number ({card.Number}) Delete Sucess"
             });
 
+        }
+
+        [HttpGet("FilterCard/{name}-{userid}")]
+        public async Task<ActionResult<IEnumerable<Card>>> FilterUser(string name, string userid)
+        {
+            if (name == null)
+            {
+                BadRequest();
+            }
+
+            return await _cardRepository.FilterCard(name, userid).ToListAsync();
         }
 
     }

@@ -4,6 +4,7 @@ using ControleFinanceiro.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ControleFinanceiro.DAL.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20220124131349_TOKEN")]
+    partial class TOKEN
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -128,16 +130,16 @@ namespace ControleFinanceiro.DAL.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "c62a7efc-4d49-46bf-b04f-b4f3e123e3fe",
-                            ConcurrencyStamp = "b7cfc326-3b17-4192-9c7f-0f749640b199",
+                            Id = "69885de9-8343-48cf-98b9-b12e8cba563f",
+                            ConcurrencyStamp = "94fd98e6-7253-4887-a8ad-ff1ea0cd09de",
                             Description = "Admintrador do sistema",
                             Name = "Administrador",
                             NormalizedName = "ADMINISTRADOR"
                         },
                         new
                         {
-                            Id = "373b1b63-2eee-4e65-8b98-9dbdfc8cfc14",
-                            ConcurrencyStamp = "1c68b9bf-768b-4138-bb46-04ed1be68ac9",
+                            Id = "4d36fa55-6db7-416a-b488-b9c2940d4a3c",
+                            ConcurrencyStamp = "85f392e8-1a89-43e7-8cc3-329d38a2f845",
                             Description = "Usuario do sistema",
                             Name = "Usuario",
                             NormalizedName = "USUARIO"

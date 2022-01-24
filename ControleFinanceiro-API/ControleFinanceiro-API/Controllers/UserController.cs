@@ -11,7 +11,7 @@ namespace ControleFinanceiro_API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [allo]
+    [AllowAnonymous]
     [Authorize]
     public class UserController : ControllerBase
     {
@@ -35,16 +35,6 @@ namespace ControleFinanceiro_API.Controllers
             return user;
         }
 
-        [HttpGet("FilterUser/{name}")]
-        public async Task<ActionResult<IEnumerable<User>>> FilterUser(string name)
-        {
-            if (name == null)
-            {
-                BadRequest();
-            }
-
-            return await _userRepository.FilterUser(name).ToListAsync();
-        }
 
         [HttpPost("SavePhoto")]
         public async Task<ActionResult> SavePhoto()
@@ -103,6 +93,7 @@ namespace ControleFinanceiro_API.Controllers
 
                     return Ok(new
                     {
+                        message = "Register Sucess",
                         emailUserLogin = user.Email,
                         UserId = user.Id,
                         TokenUsuarioLogado = token

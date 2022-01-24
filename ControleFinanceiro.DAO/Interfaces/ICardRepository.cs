@@ -12,5 +12,6 @@ namespace ControleFinanceiro.DAL.Interfaces
     {
 
         IQueryable<Card> GetCardsUser(string UserId);
+        IQueryable<Card> FilterCard(string name, string userid);
     }
 }

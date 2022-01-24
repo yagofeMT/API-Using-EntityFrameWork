@@ -18,6 +18,19 @@ namespace ControleFinanceiro.DAL.Repositories
             _context = context;
         }
 
+        public IQueryable<Card> FilterCard(string name, string userid)
+        {
+            try
+            {
+                return _context.Cards.Where(c => c.Name.Contains(name)).Where(c => c.UserId == userid);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
         public IQueryable<Card> GetCardsUser(string UserId)
         {
             try
