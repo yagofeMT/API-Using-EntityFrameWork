@@ -3522,24 +3522,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Yago Felipe\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\User\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Yago Felipe\\Desktop\\projects\\ControleFinanceiro\\ControleFinanceiro.DAO\\ControleFinanceiro.DAL.csproj",
+      "projectUniqueName": "C:\\Users\\User\\OneDrive - MODALGR\\Área de Trabalho\\Course\\ControleFinanceiro\\ControleFinanceiro.DAO\\ControleFinanceiro.DAL.csproj",
       "projectName": "ControleFinanceiro.DAL",
-      "projectPath": "C:\\Users\\Yago Felipe\\Desktop\\projects\\ControleFinanceiro\\ControleFinanceiro.DAO\\ControleFinanceiro.DAL.csproj",
-      "packagesPath": "C:\\Users\\Yago Felipe\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Yago Felipe\\Desktop\\projects\\ControleFinanceiro\\ControleFinanceiro.DAO\\obj\\",
+      "projectPath": "C:\\Users\\User\\OneDrive - MODALGR\\Área de Trabalho\\Course\\ControleFinanceiro\\ControleFinanceiro.DAO\\ControleFinanceiro.DAL.csproj",
+      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\User\\OneDrive - MODALGR\\Área de Trabalho\\Course\\ControleFinanceiro\\ControleFinanceiro.DAO\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Yago Felipe\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3553,8 +3548,8 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\Yago Felipe\\Desktop\\projects\\ControleFinanceiro\\ControleFinanceiro.BLL\\ControleFinanceiro.BLL.csproj": {
-              "projectPath": "C:\\Users\\Yago Felipe\\Desktop\\projects\\ControleFinanceiro\\ControleFinanceiro.BLL\\ControleFinanceiro.BLL.csproj"
+            "C:\\Users\\User\\OneDrive - MODALGR\\Área de Trabalho\\Course\\ControleFinanceiro\\ControleFinanceiro.BLL\\ControleFinanceiro.BLL.csproj": {
+              "projectPath": "C:\\Users\\User\\OneDrive - MODALGR\\Área de Trabalho\\Course\\ControleFinanceiro\\ControleFinanceiro.BLL\\ControleFinanceiro.BLL.csproj"
             }
           }
         }
@@ -3657,7 +3652,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }
