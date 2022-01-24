@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "S4yX8uUfboaiClSJotqpzz4U+jk1iJk3xljTn7NzJ3AUx2KSVx7gqzecw4yST5FDgUSrBHCG/GifDq6h7HhyVg==",
+  "dgSpecHash": "mzmG+AaSBbJ8W8vHfN74LHgjQYpr0I30VhrPP+cVqK8/f2RSwDEY9E3QZGsRonWPEQbOn+olTlWJx7PtVY91nA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Yago Felipe\\Desktop\\ControleFinanceiro\\ControleFinanceiro-API\\ControleFinanceiro-API\\ControleFinanceiro-API.csproj",
+  "projectFilePath": "C:\\Users\\Yago Felipe\\Desktop\\projects\\ControleFinanceiro\\ControleFinanceiro-API\\ControleFinanceiro-API\\ControleFinanceiro-API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Yago Felipe\\.nuget\\packages\\fluentvalidation\\10.3.6\\fluentvalidation.10.3.6.nupkg.sha512",
     "C:\\Users\\Yago Felipe\\.nuget\\packages\\fluentvalidation.aspnetcore\\10.3.6\\fluentvalidation.aspnetcore.10.3.6.nupkg.sha512",

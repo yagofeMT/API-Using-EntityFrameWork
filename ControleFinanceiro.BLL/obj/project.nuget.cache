@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "mjvQaxJdVvkk3lIPFwQI4p2TiicZuoxyJ5HEXReanvItkAw6lQQ4Rc46BkiH8yavXB0f9ejKb0fSUo9ET9m6Kg==",
+  "dgSpecHash": "CccklhjUtESfirQBSHvQ//5p4Ack/euAw/EFhd3h7gWnfGI+AuT49tFu7Au6gjmR7ET9wfWIH6rCz6fWv9rLcA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Yago Felipe\\Desktop\\ControleFinanceiro\\ControleFinanceiro.BLL\\ControleFinanceiro.BLL.csproj",
+  "projectFilePath": "C:\\Users\\Yago Felipe\\Desktop\\projects\\ControleFinanceiro\\ControleFinanceiro.BLL\\ControleFinanceiro.BLL.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Yago Felipe\\.nuget\\packages\\fluentvalidation\\10.3.6\\fluentvalidation.10.3.6.nupkg.sha512",
     "C:\\Users\\Yago Felipe\\.nuget\\packages\\fluentvalidation.aspnetcore\\10.3.6\\fluentvalidation.aspnetcore.10.3.6.nupkg.sha512",
